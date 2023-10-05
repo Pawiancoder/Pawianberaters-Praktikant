@@ -8,6 +8,18 @@ Also hab ich mit hingesetzt und programmiert
 
 Es hat viel Spaß gemacht und zum lernen ist das super!
 
+**Statistiken für die, die es interessiert:**
+- Zeilen Code:
+      
+  - Commands: 202 Zeilen Code
+  - anderes (index.js & commandDeploy etc): 230 Zeilen Code
+- Anzahl Commands: 5:
+1. Event erstellen per Command
+2. Minigames (Subcommand => 2 Commands in einem)
+3. Status (Per rolle)
+4. ping (test)
+          
+
 Um den Bot selber zu nutzen:
 1. Im Discord Developer Portal einen Bot erstellen (https://discord.com/developers/applications)
 2. Einen Server erstellen/beitreten (In Discord)
@@ -26,6 +38,11 @@ Um den Bot selber zu nutzen:
 - BOTTOKEN = 123456789
 - CLIENTID = 1234567890
 - GUILDID = 1234567890
+- dndrole* = 1234567890
+- offlinerole* = 1234567890
+- onlinerole* = 1234567890
+
+*DND = DoNotDisturb (Bitte nicht stören) => Die IDS mit Stern sind Rollen! Die kann man frei erstellen muss aber die ID der Rolle einfügen!
 
 - **Die Namen müssen GENAUSO sein! Sonst wird es nicht funktionieren!**
   
