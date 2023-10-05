@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, GuildScheduledEventManager, GuildScheduledEventPrivacyLevel, GuildScheduledEventEntityType } = require('discord.js');
+const { SlashCommandBuilder, GuildScheduledEventManager, GuildScheduledEventPrivacyLevel, GuildScheduledEventEntityType, ChannelType } = require('discord.js');
 require("dotenv").config();
 //TODO: Channelauswahl bei Event
 
@@ -9,6 +9,8 @@ module.exports = {
         .addStringOption(option =>
             option.setName("eventname").setDescription("der name vom event").setRequired(true)
         )
+        .addChannelOption(option =>
+            option.setName("eventchannel").setDescription("the eventchannel").setRequired(true).addChannelTypes(ChannelType.GuildVoice, ChannelType.GuildStageVoice))
         .addStringOption(option =>
             option.setName('ort')
                 .setDescription('Der Ort, an dem das Event stattfindet')
@@ -21,7 +23,9 @@ module.exports = {
         .addStringOption(option =>
             option.setName("description").setDescription("die beschreibung vom event").setRequired(false)),
     async execute(interaction) {
-        //  const client = require("../../index");
+        let channel = "";
+
+        console.log("Eventchannel: ", channel);
 
         let eventname = "";
         let description = "";
@@ -36,23 +40,25 @@ module.exports = {
         const event_manager = new GuildScheduledEventManager(guild);
 
         if (locationA == "stage") {
+            channel = interaction.options.getChannel("eventchannel").id;
             event_manager.create({
                 name: eventname,
                 scheduledStartTime: new Date(1697505600000),
                 privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly, //Privacy
                 entityType: GuildScheduledEventEntityType.StageInstance, //Ort => Voice, Stage (Server) oder Extern
                 description: description,
-                channel: "1133134383545598033",
+                channel: channel,   //
                 image: null,
             });
         } else if (locationA == "voicechannel") {
+            channel = interaction.options.getChannel("eventchannel").id;
             event_manager.create({
                 name: eventname,
                 scheduledStartTime: new Date(1697505600000),
                 privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly, //Privacy
                 entityType: GuildScheduledEventEntityType.Voice, //Ort => Voice, Stage (Server) oder Extern
                 description: description,
-                channel: "1022590362700746863",
+                channel: channel,
                 image: null,
             });
         }
