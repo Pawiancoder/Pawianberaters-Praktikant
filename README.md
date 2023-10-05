@@ -32,6 +32,9 @@ Um den Bot selber zu nutzen:
 - BOTTOKEN 
 - CLIENTID 
 - GUILDID
+- dndrole
+- offlinerole
+- onlinerole
 
 - Bsp:
 - application_id = 1234567890
@@ -59,3 +62,9 @@ Um den Bot selber zu nutzen:
   
   Ansonsten viel Spaß bei nutzen des Bots
   Fragen und Ideen/Fehlermeldungen sind erwünscht :D
+
+
+
+
+
+  **Made with JS and Love by MaksymilianOE and Pawiancoder**
