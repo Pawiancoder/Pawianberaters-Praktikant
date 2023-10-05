@@ -62,3 +62,9 @@ Um den Bot selber zu nutzen:
   
   Ansonsten viel Spaß bei nutzen des Bots
   Fragen und Ideen/Fehlermeldungen sind erwünscht :D
+
+
+
+
+
+  **Made with JS and Love by MaksymilianOE and Pawiancoder**
