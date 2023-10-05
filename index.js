@@ -7,6 +7,7 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBit
 require("dotenv").config();
 const eventAnnouncementChannelID = "1133693137869611068";
 const announcementChannel = client.channels.cache.get("1133693137869611068");
+//Neuer toller Kommentar lol
 
 const sharedVariable = new Map();
 
