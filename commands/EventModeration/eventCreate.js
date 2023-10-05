@@ -1,5 +1,6 @@
 const { SlashCommandBuilder, GuildScheduledEventManager, GuildScheduledEventPrivacyLevel, GuildScheduledEventEntityType } = require('discord.js');
 require("dotenv").config();
+//TODO: Channelauswahl bei Event
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -29,7 +30,7 @@ module.exports = {
         description = interaction.options.getString("description");
         eventname = interaction.options.getString('eventname');
 
-        const guildID = "1022590362239377488";
+        const guildID = process.env.GUILDID;
         const guild = interaction.client.guilds.cache.find((guild) => guild.id === guildID);
 
         const event_manager = new GuildScheduledEventManager(guild);

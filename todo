@@ -2,5 +2,5 @@
     - wenn Event mit gleichem Namen => fehler bzw. hinzweiß
     - Uhrzeit (Startzeit) konvertieren
     - Ort (Server;Stage oder Extern) per Subcommand! 
-    -
+    - Bei Eventcreate: channel auswählen (ID und so yk)
            
