@@ -53,9 +53,9 @@ client.on(Events.InteractionCreate, async interaction => {
     if (interaction.isButton || interaction.isChatInputCommand) {
         if (interaction.isButton()) {
             let member = interaction.guild.members.cache.get(interaction.user.id);
-            let onlineRole = interaction.guild.roles.cache.find(role => role.id == "1126125605797236768");
-            let offlineRole = interaction.guild.roles.cache.find(role => role.id == "1126125667298316368");
-            let dndRole = interaction.guild.roles.cache.find(role => role.id == "1126125707609772114");
+            let onlineRole = interaction.guild.roles.cache.find(role => role.id == process.env.onlineRole);
+            let offlineRole = interaction.guild.roles.cache.find(role => role.id == process.env.offlineRole);
+            let dndRole = interaction.guild.roles.cache.find(role => role.id == process.env.dndRole);
 
             if (interaction.customId === "online") { //?onlinestatus
                 member.roles.remove(dndRole);
