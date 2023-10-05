@@ -8,6 +8,7 @@ require("dotenv").config();
 const eventAnnouncementChannelID = "1133693137869611068";
 const announcementChannel = client.channels.cache.get("1133693137869611068");
 //Neuer toller Kommentar lol
+//Viel coolerer Kommentar LOOOOOOOOOOOL!
 
 const sharedVariable = new Map();
 
