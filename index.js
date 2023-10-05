@@ -36,6 +36,7 @@ for (const folder of commandFolders) {
 //!Eventlistener für guildScheduledEvents
 client.on("guildScheduledEventCreate", (e) => {
     console.log(`Event "${e.name}" created!`);
+
     //TODO Nachricht in Announcementchannel schicken wenn event erstellt oder beendet
 });
 
