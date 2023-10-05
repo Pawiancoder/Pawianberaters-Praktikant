@@ -8,14 +8,10 @@ require("dotenv").config();
 const eventAnnouncementChannelID = "1133693137869611068";
 const announcementChannel = client.channels.cache.get("1133693137869611068");
 
-
-const botVoiceVariable = new Map();
 const sharedVariable = new Map();
 
 sharedVariable.set("numGame", false);
 sharedVariable.set("numGameNumber", 0);
-
-botVoiceVariable.set("isInVoice", false);
 
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
@@ -177,6 +173,6 @@ client.on("messageCreate", async message => { //Fälle: Zahl ist größer; Zahl 
 client.login(process.env.BOTTOKEN);
 
 //Hier exportiere ich die Variable in der index.js datei
-module.exports = sharedVariable, client, botVoiceVariable;
+module.exports = sharedVariable, client;
 
 //TODO: channel merken und nur in diesem Channel die Antworten nehmen
