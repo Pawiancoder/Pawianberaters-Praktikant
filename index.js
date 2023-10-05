@@ -5,8 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildScheduledEvents] });
 require("dotenv").config();
-const eventAnnouncementChannelID = "1133693137869611068";
-const announcementChannel = client.channels.cache.get("1133693137869611068");
+//TODO log if event canceled
 //Neuer toller Kommentar lol
 //Viel coolerer Kommentar LOOOOOOOOOOOL!
 
@@ -40,10 +39,10 @@ client.on("guildScheduledEventCreate", (e) => {
     //TODO Nachricht in Announcementchannel schicken wenn event erstellt oder beendet
 });
 
-client.on("guildScheduledEventDelete", (e) => {
+/*client.on("guildScheduledEventDelete", (e) => {
     console.log(`Event "${e.name}" deleted!`);
-    announcementChannel.send(`Event "${e.name}" deleted!`)
-});
+    announcementChannel.send(`Event "${e.name}" deleted!`);
+}); */
 
 client.on("guildScheduledEventUserAdd", (e) => {
     console.log("User im Event: ", e.fetchSubscribers);
