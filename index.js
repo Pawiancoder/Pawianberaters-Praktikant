@@ -35,14 +35,11 @@ for (const folder of commandFolders) {
 
 //!Eventlistener für guildScheduledEvents
 client.on("guildScheduledEventCreate", (e) => {
-    console.log(`Event "${e.name}" created!`);
-    //TODO Nachricht in Announcementchannel schicken wenn event erstellt oder beendet
+    let channelID = process.env.logchannel;
+    const logChannel = client.channels.cache.get(channelID);
+    console.log(`Event ${e.name} ertellt!`);
+    logChannel.send(`Event **${e.name}** wurde ertellt!`);
 });
-
-/*client.on("guildScheduledEventDelete", (e) => {
-    console.log(`Event "${e.name}" deleted!`);
-    announcementChannel.send(`Event "${e.name}" deleted!`);
-}); */
 
 client.on("guildScheduledEventUserAdd", (e) => {
     console.log("User im Event: ", e.fetchSubscribers);
@@ -137,6 +134,15 @@ client.on('ready', () => {
 
     console.log(`Logged in as ${client.user.tag}!`);
 });
+
+client.on("guildScheduledEventDelete", (e) => {
+    let channelID = process.env.logchannel;
+    const logChannel = client.channels.cache.get(channelID);
+    console.log(`Event ${e.name} gelöscht!`);
+    logChannel.send(`Event **${e.name}** wurde gelöscht!`);
+})
+
+client.on
 
 client.on("messageCreate", async message => { //Fälle: Zahl ist größer; Zahl ist kleiner; Zahl wurde gefunden
     let number = sharedVariable.get("numGameNumber");
