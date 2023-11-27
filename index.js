@@ -11,8 +11,23 @@ require("dotenv").config();
 
 const sharedVariable = new Map();
 
+let commandHelp = [];
+
 sharedVariable.set("numGame", false);
 sharedVariable.set("numGameNumber", 0);
+
+//!Description Constructer
+class setDescription {
+    commandName = this.name;
+    CommandDescription = this.CommandDescription;
+}
+
+const setUpCommandDescription = (commandNameSet, description) => {
+    let commandSetter = new setDescription();
+    commandSetter.commandName = commandNameSet;
+    commandSetter.CommandDescription = description;
+    commandHelp.push(commandSetter);
+}
 
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
@@ -180,6 +195,6 @@ client.on("messageCreate", async message => { //Fälle: Zahl ist größer; Zahl 
 client.login(process.env.BOTTOKEN);
 
 //Hier exportiere ich die Variable in der index.js datei
-module.exports = sharedVariable, client;
+module.exports = { sharedVariable, client, setUpCommandDescription, commandHelp };
 
-//TODO: channel merken und nur in diesem Channel die Antworten nehmen
+//TODO: channel merken und nur in diesem Channel die Antworten nehmen => Zahl erraten
