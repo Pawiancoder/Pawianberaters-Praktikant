@@ -1,30 +1,21 @@
-const axios = require("axios");
+
 
 function sendRequest(ip, username, number, state) {
+    const axios = require("axios");
     //https://192.168.2.202/api/1028d66426293e821ecfd9ef1a0731df/lights/1/state
-    let url = `https://${ip}/api/${username}/lights/${number}/state`;
+    let url = `http://${ip}/api/${username}/lights/${number}/state`;
 
-    const data = {
-        "on": state
+    const URLdata = {
+        "on": state //!State = Status (an oder aus)
     }
 
-    const config = {
-        method: 'put', // Axios verwendet lowercase für HTTP-Methoden
-        url: url,
+    axios.put(url, URLdata, {
         headers: {
-            'Content-Type': 'application/json', // Der Inhaltstyp muss auf JSON gesetzt sein, wenn Sie JSON senden
-            // Weitere Header können je nach Bedarf hinzugefügt werden
-            // 'Authorization': 'Bearer YourAccessToken'
+            "Content-Type": "application/json",
         },
-        data: data // Daten im Request-Body
-    };
-
-    axios(config)
-        .then(response => {
-            console.log("PUT-Request erfolgreich: ", response.data);
-        })
-        .catch(error => {
-            console.log("Ein Fehler ist aufgetreten (HUE_CONTROL): ", error);
+    })
+        .catch(e => {
+            console.log("Fehler (HUE API): ", e);
         })
 }
 
