@@ -139,7 +139,6 @@ client.on(Events.InteractionCreate, async interaction => {
 
 });
 
-
 client.on('ready', () => {
 
     client.user.setActivity({ //set an Activity for the Bot
@@ -156,8 +155,6 @@ client.on("guildScheduledEventDelete", (e) => {
     console.log(`Event ${e.name} gelöscht!`);
     logChannel.send(`Event **${e.name}** wurde gelöscht!`);
 })
-
-client.on
 
 client.on("messageCreate", async message => { //Fälle: Zahl ist größer; Zahl ist kleiner; Zahl wurde gefunden
     let number = sharedVariable.get("numGameNumber");
