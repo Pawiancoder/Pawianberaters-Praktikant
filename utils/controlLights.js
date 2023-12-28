@@ -1,9 +1,10 @@
 
-
-function sendRequest(ip, username, number, state) {
+function sendRequest(number, state) {
     const axios = require("axios");
+    require("dotenv").config();
+
     //https://192.168.2.202/api/1028d66426293e821ecfd9ef1a0731df/lights/1/state
-    let url = `http://${ip}/api/${username}/lights/${number}/state`;
+    let url = `http://${process.env.BRIDGEIP}/api/${process.env.HUENAME}/lights/${number}/state`;
 
     const URLdata = {
         "on": state //!State = Status (an oder aus)
