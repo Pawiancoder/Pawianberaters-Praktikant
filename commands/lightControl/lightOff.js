@@ -6,10 +6,11 @@ module.exports = {
         .setName('lightoff')
         .setDescription('turns the light off'),
     async execute(interaction) {
-        console.log("INTERACTION ADSADSAD");
+
         const { sendRequest } = require("../../utils/controlLights");
-        await interaction.reply("Light is **OFF**");
-        sendRequest(3, false);
+        let response = await sendRequest(3, false);
+        //!console.log(response);
+        await interaction.reply(response);
         // await interaction.reply('Pong!');
     },
 };

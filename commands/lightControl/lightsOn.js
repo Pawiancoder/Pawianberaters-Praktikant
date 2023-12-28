@@ -6,8 +6,8 @@ module.exports = {
         .setDescription('turn the light on'),
     async execute(interaction) {
         const { sendRequest } = require("../../utils/controlLights");
-        sendRequest(3, true);
-        await interaction.reply("Light is **ON**");
+        const response = await sendRequest(3, true);
+        await interaction.reply(response);
         // await interaction.reply('Pong!');
     },
 };
