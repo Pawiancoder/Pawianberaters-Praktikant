@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('controllights')
+        .setName('lights')
         .setDescription('control the light')
         .addIntegerOption(option =>
             option.setName("lampe").setDescription("nummer der lampe").setRequired(true))
