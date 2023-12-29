@@ -9,12 +9,11 @@ module.exports = {
     async execute(interaction) {
         const { getRequest } = require("../../utils/controlLights");
         let lamp = interaction.options.getInteger("number");
-        const response = await getRequest(lamp);
+        const response = await getRequest(lamp, false);
         console.log("RESPONSE: ", response);
-        if (response) {
-            await interaction.reply(`Lampe ${lamp} ist **Angeschalten**`);
-        } else {
-            await interaction.reply(`Lampe ${lamp} ist **Ausgeschalten**`);
-        }
+        await interaction.reply({
+            content: response,
+            ephemeral: true,
+        });
     },
 };
