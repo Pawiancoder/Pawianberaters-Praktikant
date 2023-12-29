@@ -17,9 +17,9 @@ Es hat viel Spaß gemacht und zum lernen ist das super!
 4. ping (test)
   
   Das Projekt ist mit NodeJS (Javascript) erstellt. Falls du das noch nicht installiert hast:
-  https://nodejs.org/de (Seite stand 10/2023)
+  https://nodejs.org/en (Seite stand 10/2023)
   
-  
+
   Fragen und Ideen/Fehlermeldungen sind erwünscht :D
 
 

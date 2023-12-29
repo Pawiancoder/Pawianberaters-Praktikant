@@ -32,5 +32,30 @@ async function sendRequest(number, state) {
     }
 }
 
+async function getRequest(light) {
+    try {
+        const axios = require("axios");
+        require("dotenv").config();
+        let url = `http://${process.env.BRIDGEIP}/api/${process.env.HUENAME}/lights/${light}/`;
+        return axios.get(url, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then(response => {
+                if (response.data && response.data[0] && response.data[0].error) {
+                    return `Die Lampe ${light} wurde ist nicht auffindbar. Versuche es erneut`;
+                } else {
+                    return response.data.state.on;
+                }
+            })
+    } catch (e) {
+        console.log("Fehler (API-GET-REQUEST): ", e);
+        throw error;
+    }
+}
 
-module.exports = { sendRequest }
+
+
+
+module.exports = { sendRequest, getRequest }
