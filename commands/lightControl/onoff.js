@@ -12,7 +12,7 @@ module.exports = {
         const { sendRequest } = require("../../utils/controlLights");
         let lamp = interaction.options.getInteger('lampe');
         let state = interaction.options.getBoolean('state');
-        let response = await sendRequest(lamp, state);
+        let response = await sendRequest(lamp, state, false);
         await interaction.reply({
             content: response,
             ephemeral: true,

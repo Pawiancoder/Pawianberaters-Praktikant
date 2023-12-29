@@ -27,13 +27,13 @@ async function getRequest(light, system) {
     }
 }
 
-async function sendRequest(number, state) { //!get request
+async function sendRequest(number, state, changing, saturation, brightness, hue) { //!get request
     try {
-        if ((await getRequest(number, true)) && state) {
+        if ((await getRequest(number, true)) && state && !changing) {
             console.log("1: ", await getRequest(number, true));
             console.log("2: ", state);
             return `Die Lampe ${number} ist bereits an!`;
-        } else if (!(await getRequest(number, true)) && !state) {
+        } else if (!(await getRequest(number, true)) && !state && !changing) {
             console.log("1: ", await getRequest(number, true));
             console.log("2: ", state);
             return `Die Lampe ${number} ist bereits aus!`;
@@ -46,8 +46,9 @@ async function sendRequest(number, state) { //!get request
             let url = `http://${process.env.BRIDGEIP}/api/${process.env.HUENAME}/lights/${number}/state`;
             console.log("URL: ", url);
 
+            //!brightness = 254
             const URLdata = {
-                "on": true, "sat": 254, "bri": 254, "hue": 10000  //!State = Status (an oder aus)
+                "on": state, "sat": saturation, "bri": brightness, "hue": hue  //!State = Status (an oder aus)
             }
 
             return axios.put(url, URLdata, {
@@ -58,6 +59,7 @@ async function sendRequest(number, state) { //!get request
                 .then(response => {
                     //!console.log("RESPONSE: ", response.data[0]);
                     if (response.data && response.data[0] && response.data[0].error) {
+                        console.log(response.data[0].error.description);
                         return `Die Lampe ${number} wurde nicht gefunden oder ist nicht verfügbar! Versuche es erneut oder öffne ein Ticket mit **/reporterror**!`;
                     } else {
                         return state
