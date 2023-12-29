@@ -44,9 +44,10 @@ async function sendRequest(number, state) { //!get request
 
             //https://192.168.2.103/api/1028d66426293e821ecfd9ef1a0731df/lights/1/state
             let url = `http://${process.env.BRIDGEIP}/api/${process.env.HUENAME}/lights/${number}/state`;
+            console.log("URL: ", url);
 
             const URLdata = {
-                "on": state //!State = Status (an oder aus)
+                "on": true, "sat": 254, "bri": 254, "hue": 10000  //!State = Status (an oder aus)
             }
 
             return axios.put(url, URLdata, {
@@ -70,10 +71,4 @@ async function sendRequest(number, state) { //!get request
         throw error;
     }
 }
-
-
-
-
-
-
 module.exports = { sendRequest, getRequest }
