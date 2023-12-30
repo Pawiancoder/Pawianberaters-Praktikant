@@ -60,7 +60,7 @@ module.exports = {
             await interaction.deferReply(); //nachdenken
             const pause = Math.round(Math.random() * 5001); //Random sekunden (0-5) zum nachdenken
 
-            const sharedVariable = require("../../index");
+            const { sharedVariable } = require("../../index");
             //Zugriff auf die zwei Variablen (gameState und Zahl)
             let numGame = sharedVariable.get("numGame");
             //! console.log("1 ", numGame);

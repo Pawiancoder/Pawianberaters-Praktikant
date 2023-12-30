@@ -1,5 +1,4 @@
-const { error, log } = require('console');
-const { channel } = require('diagnostics_channel');
+
 const { Client, GatewayIntentBits, Collection, Events, MessageComponentInteraction, ActivityType, Guild, Intents } = require('discord.js');
 const fs = require("fs");
 const path = require("path");
@@ -53,7 +52,7 @@ client.on("guildScheduledEventCreate", (e) => {
     let channelID = process.env.logchannel;
     const logChannel = client.channels.cache.get(channelID);
     console.log(`Event ${e.name} ertellt!`);
-    logChannel.send(`Event **${e.name}** wurde ertellt!`);
+    logChannel.send(`Event **${e.name}** wurde erstellt!`);
 });
 
 client.on("guildScheduledEventUserAdd", (e) => {
@@ -180,7 +179,7 @@ client.on("messageCreate", async message => { //Fälle: Zahl ist größer; Zahl 
             });
         } else if (message.content == number) {
             message.reply({
-                content: `Richtig! Die gesuchte Zahl war **${number}**. Herzlichen Glückwunsch du hast sie gefunden!`,
+                content: `Richtig! Die gesuchte Zahl war **${number}**! Herzlichen Glückwunsch du hast sie gefunden!`,
                 ephemeral: true,
             });
             sharedVariable.set("numGame", false);

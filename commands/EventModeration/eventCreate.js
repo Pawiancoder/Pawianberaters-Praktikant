@@ -43,7 +43,7 @@ module.exports = {
             channel = interaction.options.getChannel("eventchannel").id;
             event_manager.create({
                 name: eventname,
-                scheduledStartTime: new Date(1697505600000),
+                scheduledStartTime: new Date(1703962800000),
                 privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly, //Privacy
                 entityType: GuildScheduledEventEntityType.StageInstance, //Ort => Voice, Stage (Server) oder Extern
                 description: description,
@@ -54,7 +54,7 @@ module.exports = {
             channel = interaction.options.getChannel("eventchannel").id;
             event_manager.create({
                 name: eventname,
-                scheduledStartTime: new Date(1697505600000),
+                scheduledStartTime: new Date(1703962800000),
                 privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly, //Privacy
                 entityType: GuildScheduledEventEntityType.Voice, //Ort => Voice, Stage (Server) oder Extern
                 description: description,
