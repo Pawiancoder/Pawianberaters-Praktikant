@@ -1,4 +1,4 @@
-async function getRequest(light, system) {
+async function getRequest(light, system) { //System = Ausgabe Lampenstatus als boolischer Wert oder als Text (Nicht system => User)
     try {
         const axios = require("axios");
         require("dotenv").config();
@@ -15,7 +15,7 @@ async function getRequest(light, system) {
                     if (!system) {
                         return response.data.state.on
                             ? `Die Lampe ${light} ist **AN**`
-                            : `Die Lampe ${light} wurde **AUS KEK**`
+                            : `Die Lampe ${light} wurde **AUS**`
                     } else {
                         return response.data.state.on;
                     }
@@ -30,14 +30,9 @@ async function getRequest(light, system) {
 async function sendRequest(number, state, changing, saturation, brightness, hue) { //!get request
     try {
         if ((await getRequest(number, true)) && state && !changing) {
-            console.log("1: ", await getRequest(number, true));
-            console.log("2: ", state);
             return `Die Lampe ${number} ist bereits an!`;
         } else if (!(await getRequest(number, true)) && !state && !changing) {
-            console.log("1: ", await getRequest(number, true));
-            console.log("2: ", state);
             return `Die Lampe ${number} ist bereits aus!`;
-
         } else {
             const axios = require("axios");
             require("dotenv").config();
