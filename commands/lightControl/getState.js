@@ -7,6 +7,8 @@ module.exports = {
         .addIntegerOption(option =>
             option.setName("number").setDescription("lampe").setRequired(true)),
     async execute(interaction) {
+        const { setUpCommandDescription } = require("../../index");
+        setUpCommandDescription("/getState", "Status der Lampe anzeigen (an/aus)");
         const { getRequest } = require("../../utils/controlLights");
         let lamp = interaction.options.getInteger("number");
         const response = await getRequest(lamp, false);

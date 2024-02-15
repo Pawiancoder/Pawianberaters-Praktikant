@@ -12,21 +12,16 @@ const sharedVariable = new Map();
 
 let commandHelp = [];
 
+function setUpCommandDescription(commandName, commandDescription) {
+    const { setDescription } = require("./utils/helpConstructor");
+    const desc = new setDescription();
+    desc.commandName = commandName;
+    desc.commandDescription = commandDescription;
+    commandHelp.push(desc);
+}
+
 sharedVariable.set("numGame", false);
 sharedVariable.set("numGameNumber", 0);
-
-//!Description Constructer
-class setDescription {
-    commandName = this.name;
-    CommandDescription = this.CommandDescription;
-}
-
-const setUpCommandDescription = (commandNameSet, description) => {
-    let commandSetter = new setDescription();
-    commandSetter.commandName = commandNameSet;
-    commandSetter.CommandDescription = description;
-    commandHelp.push(commandSetter);
-}
 
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
@@ -141,8 +136,8 @@ client.on(Events.InteractionCreate, async interaction => {
 client.on('ready', () => {
 
     client.user.setActivity({ //set an Activity for the Bot
-        name: "/status",
-        type: ActivityType.Listening
+        name: "/hilfe",
+        type: ActivityType.Listening,
     })
 
     console.log(`Logged in as ${client.user.tag}!`);
@@ -191,6 +186,6 @@ client.on("messageCreate", async message => { //Fälle: Zahl ist größer; Zahl 
 client.login(process.env.BOTTOKEN);
 
 //Hier exportiere ich die Variable in der index.js datei
-module.exports = { sharedVariable, client, setUpCommandDescription, commandHelp };
+module.exports = { sharedVariable, client, commandHelp, setUpCommandDescription };
 
 //TODO: channel merken und nur in diesem Channel die Antworten nehmen => Zahl erraten
